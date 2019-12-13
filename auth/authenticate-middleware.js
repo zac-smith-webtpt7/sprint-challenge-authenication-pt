@@ -20,6 +20,6 @@ module.exports = (req, res, next) => {
       }
     });
   } else {
-    res.status(401).json({ you: "You shall not pass!" });
+    res.status(401).json({ Error: "You shall not pass!" });
   }
 };

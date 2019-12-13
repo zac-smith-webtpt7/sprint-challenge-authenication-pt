@@ -7,6 +7,12 @@ const Users = require("../users/users-model.js");
 const { validateUser } = require("../users/users-helper.js");
 
 //endpoints
+
+router.get("/", (req, res) => {
+  res.status(200).json({
+    message: `Auth endpoint /api/auth is running`
+  });
+});
 router.post("/register", (req, res) => {
   let user = req.body;
 
