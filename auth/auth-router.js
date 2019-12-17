@@ -55,13 +55,13 @@ router.post("/login", (req, res) => {
       }
     })
     .catch(error => {
-      res.status(500).json(error);
+      res.status(500).json({ message: `Error: ${error}` });
     });
 });
 
 const getJwtToken = username => {
   const payload = {
-    username: "username"
+    username
   };
 
   const secret = process.env.JWT_SECRET || "secret";
