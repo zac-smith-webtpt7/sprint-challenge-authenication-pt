@@ -1,9 +1,11 @@
 const request = require("supertest");
 const server = require("../api/server.js");
+const db = require("../database/dbConfig.js");
+const Auth = require("../auth/auth-router.js");
 
 describe("server.js", () => {
   describe("register endpoint", () => {
-    it("should return 400 status code", async () => {
+    it("should return 400 status", async () => {
       const expectedStatusCode = 400;
       const response = await request(server).post("/api/auth/register");
 
@@ -16,8 +18,8 @@ describe("server.js", () => {
     });
   });
 
-  describe("login endpoint", () => {
-    it("should return 500 status code if nothing is sent", async () => {
+  describe("login", () => {
+    it("should return 500 status code if no creditials sent", async () => {
       const expectedStatusCode = 500;
       const response = await request(server).post("/api/auth/login");
 
@@ -27,7 +29,7 @@ describe("server.js", () => {
     it("user is able to log in", async () => {
       const response = await request(server)
         .post("/api/auth/register")
-        .send({ username: "user1", password: "1111" });
+        .send({ username: "zac", password: "password" });
 
       expect(200);
     });
